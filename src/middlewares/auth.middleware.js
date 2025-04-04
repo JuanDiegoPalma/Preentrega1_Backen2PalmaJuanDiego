@@ -1,6 +1,3 @@
-import jwt from 'jsonwebtoken'
-import { PRIVATE_KEY } from '../utiils/authToken.js'
-
 export const authToken = (req, res, next) => {
     const authHeader = req.headers['authorization'] 
     const token = authHeader.split(' ')[1]
@@ -12,3 +9,10 @@ export const authToken = (req, res, next) => {
 
     })
 }
+
+export const authentication = (req, res, next) => {
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+        return res.status(401).send({ status: 'error', error: 'Unauthorized' });
+    }
+    next();
+};

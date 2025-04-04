@@ -22,3 +22,4 @@ const usersSchema = new Schema({
 })
 
 export const userModel = model(usersCollection, usersSchema)
+
